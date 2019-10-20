@@ -1,0 +1,99 @@
+<html>
+    <head>
+    <title>Cuso JavaScript</title>
+    </head>
+    <body>
+        <div id="app">
+            <button onmouseover="">Exercicio 1</button>
+
+        </div>
+
+        <div id="app2">
+
+        </div>
+
+
+        <script>
+
+            //Exercicio 1
+            var controle = 0;
+            var divMae = document.querySelector('div#app');
+            var btnExe1 = document.querySelector('div#app button');
+            btnExe1.setAttribute('onClick','criaBotao()');
+            
+            
+            function criaBotao(){
+                var boxElement = document.createElement('div');
+                boxElement.style.width = 100;
+                boxElement.style.height = 100;
+                boxElement.style.backgroundColor = '#f00';
+                //Exercicio 2
+                boxElement.setAttribute('id','box'+controle);
+                boxElement.setAttribute('onMouseOver','alteraCor(this.id)');
+                controle++;
+
+                
+
+                divMae.appendChild(boxElement)
+            }
+
+            //Exercicio 2
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            function alteraCor(boxId){
+                var quadrado = document.querySelector('div#'+boxId)
+                quadrado.style.backgroundColor = getRandomColor();
+            }
+               
+
+            
+            
+            
+            //Exercicio 3
+            var nomes = ["Diego", "Gabriel", "Lucas"];
+            
+            var divMae2 = document.querySelector('div#app2');
+            var lista = document.createElement('ul');
+            divMae2.appendChild(lista);
+
+            for (a of nomes) {
+                var li = document.createElement('li');
+                li.innerHTML += a;
+                lista.appendChild(li);
+            }
+
+            //exercicio 4
+            var txtBtnAdd = document.createTextNode('Adicionar');
+            var input = document.createElement('input');
+            var btnAdd = document.createElement('button');
+            btnAdd.appendChild(txtBtnAdd);
+            divMae2.appendChild(input);
+            divMae2.appendChild(btnAdd);            
+            btnAdd.setAttribute('onClick','insereLista()');
+            
+            function insereLista() {
+                var li = document.createElement('li');
+                //var input = document.querySelector('div#app2 input');
+
+                li.innerHTML += input.value;
+                lista.appendChild(li);
+
+                input.value = '';
+            }
+
+
+
+
+        </script>
+            
+    </body>    
+</html>
+
+ 
